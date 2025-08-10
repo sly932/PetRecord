@@ -86,3 +86,5 @@ playground.xcworkspace
 # Environment files
 .env
 .env.*.local
+
+test.txt
