@@ -1,0 +1,88 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Xcode
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.moved-aside
+DerivedData/
+*.xccheckout
+*.xcuserstate
+*.xcscmblueprint
+
+# Keep shared/workspace metadata but ignore user-specific noise
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+*.xcworkspace/xcuserdata/
+
+# Build artifacts
+build/
+Build/
+
+# Swift Package Manager
+/.build/
+.swiftpm/
+# Keep Package.resolved (recommended to commit)
+!Package.resolved
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Accio
+Dependencies/
+.accio/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+fastlane/readme.md
+
+# Code signing and provisioning (sensitive)
+*.cer
+*.p12
+*.p8
+*.mobileprovision
+*.provisionprofile
+
+# Archives / Distribution bundles
+*.xcarchive
+*.ipa
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# JetBrains/AppCode
+.idea/
+
+# Lint/format caches
+.swiftlint_cache
+
+# Environment files
+.env
+.env.*.local
