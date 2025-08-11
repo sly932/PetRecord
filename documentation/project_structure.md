@@ -5,40 +5,38 @@
 ## 1. 结构示例
 ```
 PetRecord/
-├─ documentation/                  # 文档（本目录）
-├─ petrecord/                      # Xcode 工程根
+├─ documentation/
+├─ petrecord/
 │  ├─ petrecord.xcodeproj
-│  ├─ petrecord/                   # 源码根（App Target 同名）
-│  │  ├─ App/                      # App 入口与全局配置
-│  │  │  └─ PetRecordApp.swift
+│  ├─ petrecord/
+│  │  ├─ App/
 │  │  ├─ Shared/
-│  │  │  ├─ Models/               # 数据模型（DTO/实体），与 Core Data 映射
-│  │  │  ├─ Services/             # 持久化/通知/图表数据准备 等服务
-│  │  │  ├─ Components/           # 可复用通用组件（UI）
-│  │  │  └─ Utils/                # 工具方法、格式化、单位换算
+│  │  │  ├─ Models/
+│  │  │  ├─ Services/             # + ExportService（已有）/未来 Persistence
+│  │  │  ├─ Components/
+│  │  │  └─ Utils/
 │  │  ├─ Features/
-│  │  │  ├─ PetProfile/           # 宠物档案（列表/详情/编辑）
-│  │  │  ├─ Weight/               # 体重（新增/列表/图表）
-│  │  │  └─ Deworming/            # 驱虫（新增/列表/时间轴）
+│  │  │  ├─ Tabs/
+│  │  │  ├─ PetProfile/
+│  │  │  │  ├─ PetListView.swift        # 档案列表（顶部“新增档案”按钮）
+│  │  │  │  ├─ PetDetailView.swift      # 档案详情（查看）
+│  │  │  │  └─ PetEditorView.swift      # 档案编辑（方案A：整页编辑）
+│  │  │  ├─ Weight/
+│  │  │  │  ├─ WeightPanelView.swift    # 单宠体重
+│  │  │  │  ├─ AllPetsWeightView.swift  # 体重总览（入口仅在“数据”Tab）
+│  │  │  │  └─ WeightFormView.swift     # 新增体重表单
+│  │  │  └─ Deworming/
+│  │  │     ├─ DewormingPanelView.swift # 单宠驱虫
+│  │  │     └─ DewormingFormView.swift  # 新增驱虫表单
 │  │  ├─ Data/
-│  │  │  ├─ CoreData/             # .xcdatamodeld 模型文件与子版本
-│  │  │  └─ Migrations/           # 迁移脚本/说明（如需要）
-│  │  └─ Resources/               # 资源（Assets、本地化）
-│  └─ Tests/                       # XCTest 测试
-└─ .gitignore
+│  │  └─ Resources/
+│  └─ Tests/
 ```
 
-## 2. 分层说明（给新手的“放什么”的指南）
-- App：应用启动入口、依赖注入、全局样式/主题
-- Shared/Models：
-  - DTO/简单结构体（供视图模型使用）
-  - 与 Core Data 的 NSManagedObject 子类或生成文件（如使用）
-- Shared/Services：
-  - PersistenceService（Core Data 封装）
-  - NotificationService（提醒通知）
-  - ChartDataService（整理图表数据）
-- Features/*：以业务功能为边界，包含 View、ViewModel、子视图等
-- Data/CoreData：数据模型版本管理，新增字段/实体时新增子版本
+## 2. 分层说明
+- PetProfile：新增 `PetEditorView`；列表顶部加“新增档案”按钮
+- Weight/Deworming：新增表单视图用于手动添加记录；移除任何随机/演示数据写入
+- Tabs：档案页不再包含体重总览入口；总览入口统一在“数据”Tab 中
 
 ## 3. 命名与文件拆分建议
 - 功能文件夹内使用 MVVM 命名：`XxxView`、`XxxViewModel`
